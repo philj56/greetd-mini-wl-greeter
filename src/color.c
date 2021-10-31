@@ -3,7 +3,7 @@
 #include "color.h"
 #include "log.h"
 
-struct color hex_to_color(const char *hex)
+struct color hex_to_color(const char * restrict hex)
 {
 	if (hex[0] == '#') {
 		hex++;

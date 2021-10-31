@@ -9,22 +9,22 @@
 
 #define max(a, b) ((a) > (b) ? (a) : (b))
 
-static void load_shader(GLuint shader, const char *filename);
-static GLuint create_shader_program(const char *vert, const char *frag);
+static void load_shader(GLuint shader, const char * restrict filename);
+static GLuint create_shader_program(const char * restrict vert, const char * restrict frag);
 static void GLAPIENTRY MessageCallback(
 		GLenum source,
 		GLenum type,
 		GLuint id,
 		GLenum severity,
 		GLsizei length,
-		const GLchar* message,
+		const GLchar* restrict  message,
 		const void* userParam);
 static const char *gl_debug_source_string(GLenum type);
 static const char *gl_debug_type_string(GLenum type);
 static const char *gl_debug_severity_string(GLenum type);
 
 
-void gl_initialise(struct gl *gl, struct image *texture)
+void gl_initialise(struct gl * restrict gl, struct image * restrict texture)
 {
 #ifdef DEBUG
 	glEnable(GL_DEBUG_OUTPUT);
@@ -141,15 +141,15 @@ void gl_initialise(struct gl *gl, struct image *texture)
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, gl->ebo);
 }
 
-void gl_clear(struct gl *gl, struct color *color)
+void gl_clear(struct gl * restrict gl, struct color * restrict color)
 {
 	glClearColor(color->r, color->g, color->b, color->a);
 	glClear(GL_COLOR_BUFFER_BIT);
 }
 
 void gl_draw_texture(
-		struct gl *gl,
-		struct image *texture,
+		struct gl * restrict gl,
+		struct image * restrict texture,
 		int32_t x,
 		int32_t y,
 		int32_t width,
@@ -174,7 +174,7 @@ void gl_draw_texture(
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
 
-void load_shader(GLuint shader, const char *filename)
+void load_shader(GLuint shader, const char * restrict filename)
 {
 	errno = 0;
 	FILE *fp = fopen(filename, "rb");
@@ -229,7 +229,7 @@ void load_shader(GLuint shader, const char *filename)
 	}
 }
 
-GLuint create_shader_program(const char *vert, const char *frag)
+GLuint create_shader_program(const char * restrict vert, const char * restrict frag)
 {
 	GLuint vertex_shader = glCreateShader(GL_VERTEX_SHADER);
 	load_shader(vertex_shader, vert);
@@ -251,7 +251,7 @@ void GLAPIENTRY MessageCallback(
 		GLenum severity,
 		GLsizei length,
 		const GLchar* message,
-		const void* userParam)
+		const void* restrict userParam)
 {
 	log_debug("Message from OpenGL:\n");
 	log_debug("\tSource: %s\n", gl_debug_source_string(source));

@@ -28,7 +28,7 @@ struct entry {
 
 	/* Options */
 	uint32_t font_size;
-	const char *font_name;
+	const char * restrict font_name;
 	uint32_t padding;
 	bool tight_layout;
 	wchar_t password_character;
@@ -43,8 +43,8 @@ struct entry {
 	} border;
 };
 
-void entry_init(struct entry *entry, uint32_t scale);
-void entry_update(struct entry *entry);
-void entry_set_scale(struct entry *entry, uint32_t scale);
+void entry_init(struct entry * restrict entry, uint32_t scale);
+void entry_update(struct entry * restrict entry);
+void entry_set_scale(struct entry * restrict entry, uint32_t scale);
 
 #endif /* ENTRY_H */

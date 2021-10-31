@@ -9,7 +9,7 @@
 
 #define HEADER_BYTES 8
 
-void image_load(struct image *image, const char *filename)
+void image_load(struct image * restrict image, const char * restrict filename)
 {
 	log_debug("Loading image '%s'\n", filename);
 	FILE *fp = fopen(filename, "rb");

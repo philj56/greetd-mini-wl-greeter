@@ -12,6 +12,6 @@ struct image {
 	bool redraw;
 };
 
-void image_load(struct image *image, const char *filename);
+void image_load(struct image * restrict image, const char * restrict filename);
 
 #endif /* IMAGE_H */

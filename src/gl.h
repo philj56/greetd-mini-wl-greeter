@@ -14,11 +14,11 @@ struct gl {
 	GLuint shader;
 };
 
-void gl_initialise(struct gl *gl, struct image *texture);
-void gl_clear(struct gl *gl, struct color *color);
+void gl_initialise(struct gl * restrict gl, struct image * restrict texture);
+void gl_clear(struct gl * restrict gl, struct color *color);
 void gl_draw_texture(
-		struct gl *gl,
-		struct image *texture,
+		struct gl * restrict gl,
+		struct image * restrict texture,
 		int32_t x,
 		int32_t y,
 		int32_t width,

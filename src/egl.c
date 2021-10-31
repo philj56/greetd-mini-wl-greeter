@@ -7,8 +7,8 @@
 static const char *egl_error_string();
 
 void egl_create_window(
-		struct egl *egl,
-		struct wl_surface *wl_surface,
+		struct egl * restrict egl,
+		struct wl_surface * restrict wl_surface,
 		uint32_t width,
 		uint32_t height)
 {
@@ -19,7 +19,7 @@ void egl_create_window(
 	}
 }
 
-void egl_create_context(struct egl *egl, struct wl_display *wl_display)
+void egl_create_context(struct egl * restrict egl, struct wl_display * restrict wl_display)
 {
 	egl->display = eglGetDisplay(wl_display);
 	if (egl->display == EGL_NO_DISPLAY) {
@@ -97,7 +97,7 @@ void egl_create_context(struct egl *egl, struct wl_display *wl_display)
 	}
 }
 
-void egl_log_error(const char *msg) {
+void egl_log_error(const char * restrict msg) {
 	log_error("%s: %s\n", msg, egl_error_string());
 }
 
@@ -113,7 +113,7 @@ void egl_make_current(struct egl *egl) {
 	}
 }
 
-void egl_swap_buffers(struct egl *egl) {
+void egl_swap_buffers(struct egl * restrict egl) {
 	eglSwapBuffers(egl->display, egl->surface);
 }
 

@@ -3,7 +3,7 @@
 #include <json-c/json_object.h>
 #include <string.h>
 
-struct json_object *greetd_create_session(const char *username)
+struct json_object *greetd_create_session(const char * restrict username)
 {
 	struct json_object *request = json_object_new_object();
 
@@ -18,7 +18,7 @@ struct json_object *greetd_create_session(const char *username)
 	return resp;
 }
 
-struct json_object *greetd_post_auth_message_response(const char *response)
+struct json_object *greetd_post_auth_message_response(const char * restrict response)
 {
 	struct json_object *request = json_object_new_object();
 
@@ -35,7 +35,7 @@ struct json_object *greetd_post_auth_message_response(const char *response)
 	return resp;
 }
 
-struct json_object *greetd_start_session(const char *command)
+struct json_object *greetd_start_session(const char * restrict command)
 {
 	struct json_object *request = json_object_new_object();
 
@@ -64,7 +64,7 @@ struct json_object *greetd_cancel_session(void)
 	return resp;
 }
 
-enum greetd_response_type greetd_parse_response_type(struct json_object *response)
+enum greetd_response_type greetd_parse_response_type(struct json_object * restrict response)
 {
 	const char *str = json_object_get_string(json_object_object_get(response, "type"));
 	if (!strcmp(str, "success")) {
@@ -79,7 +79,7 @@ enum greetd_response_type greetd_parse_response_type(struct json_object *respons
 	return GREETD_RESPONSE_INVALID;
 }
 
-enum greetd_auth_message_type greetd_parse_auth_message_type(struct json_object *response)
+enum greetd_auth_message_type greetd_parse_auth_message_type(struct json_object * restrict response)
 {
 	const char *str = json_object_get_string(json_object_object_get(response, "auth_message_type"));
 	if (!strcmp(str, "visible")) {
@@ -97,7 +97,7 @@ enum greetd_auth_message_type greetd_parse_auth_message_type(struct json_object 
 	return GREETD_AUTH_MESSAGE_INVALID;
 }
 
-enum greetd_error_type greetd_parse_error_type(struct json_object *response)
+enum greetd_error_type greetd_parse_error_type(struct json_object * restrict response)
 {
 	const char *str = json_object_get_string(json_object_object_get(response, "error_type"));
 	if (!strcmp(str, "auth_error")) {

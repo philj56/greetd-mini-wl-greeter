@@ -6,9 +6,9 @@
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 
 void surface_initialise(
-		struct surface *surface,
+		struct surface * restrict surface,
 		struct wl_display *wl_display,
-		struct image *texture)
+		struct image * restrict texture)
 {
 	egl_create_window(
 			&surface->egl,
@@ -20,9 +20,9 @@ void surface_initialise(
 }
 
 void surface_draw(
-		struct surface *surface,
-		struct color *color,
-		struct image *texture)
+		struct surface * restrict surface,
+		struct color * restrict color,
+		struct image * restrict texture)
 {
 	egl_make_current(&surface->egl);
 	gl_clear(&surface->gl, color);

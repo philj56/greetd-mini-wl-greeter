@@ -50,8 +50,8 @@ struct client_state {
 	struct xkb_keymap *xkb_keymap;
 
 	/* greetd state */
-	const char *username;
-	const char *command;
+	const char * restrict username;
+	const char * restrict command;
 	bool submit;
 };
 

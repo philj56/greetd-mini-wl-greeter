@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 
-void log_error(const char *const fmt, ...)
+void log_error(const char * restrict const fmt, ...)
 {
 	va_list args;
 	va_start(args, fmt);
@@ -10,7 +10,7 @@ void log_error(const char *const fmt, ...)
 	va_end(args);
 }
 
-void log_warning(const char *const fmt, ...)
+void log_warning(const char * restrict const fmt, ...)
 {
 	va_list args;
 	va_start(args, fmt);
@@ -19,7 +19,7 @@ void log_warning(const char *const fmt, ...)
 	va_end(args);
 }
 
-void log_debug(const char *const fmt, ...)
+void log_debug(const char * restrict const fmt, ...)
 {
 #ifndef DEBUG
 	return;
@@ -33,7 +33,7 @@ void log_debug(const char *const fmt, ...)
 	va_end(args);
 }
 
-void log_info(const char *const fmt, ...)
+void log_info(const char * restrict const fmt, ...)
 {
 	va_list args;
 	va_start(args, fmt);

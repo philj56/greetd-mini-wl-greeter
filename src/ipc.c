@@ -14,7 +14,7 @@ static int ipc_open(void);
 static int ipc_send(int socket, struct json_object *request);
 static struct json_object *ipc_receive(int socket);
 
-struct json_object *ipc_submit(struct json_object *request)
+struct json_object *ipc_submit(struct json_object * restrict request)
 {
 	int sock = ipc_open();
 	if (sock == -1) {
@@ -68,7 +68,7 @@ int ipc_open(void)
  *
  * Returns 0 on success, or -1 on failure.
  */
-int ipc_send(int sock, struct json_object *request)
+int ipc_send(int sock, struct json_object * restrict request)
 {
 	const char *str = json_object_to_json_string(request);
 	uint32_t len = strlen(str);

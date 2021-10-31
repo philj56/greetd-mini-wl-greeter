@@ -31,13 +31,13 @@ enum greetd_error_type {
 	GREETD_ERROR_ERROR
 };
 
-[[nodiscard]] struct json_object *greetd_create_session(const char *username);
-[[nodiscard]] struct json_object *greetd_post_auth_message_response(const char *response);
-[[nodiscard]] struct json_object *greetd_start_session(const char *command);
+[[nodiscard]] struct json_object *greetd_create_session(const char * restrict username);
+[[nodiscard]] struct json_object *greetd_post_auth_message_response(const char * restrict response);
+[[nodiscard]] struct json_object *greetd_start_session(const char * restrict command);
 [[nodiscard]] struct json_object *greetd_cancel_session(void);
 
-enum greetd_response_type greetd_parse_response_type(struct json_object *response);
-enum greetd_auth_message_type greetd_parse_auth_message_type(struct json_object *response);
-enum greetd_error_type greetd_parse_error_type(struct json_object *response);
+enum greetd_response_type greetd_parse_response_type(struct json_object * restrict response);
+enum greetd_auth_message_type greetd_parse_auth_message_type(struct json_object * restrict response);
+enum greetd_error_type greetd_parse_error_type(struct json_object * restrict response);
 
 #endif /* GREETD_H */

@@ -8,6 +8,6 @@
  *
  * Returns the response on success, or NULL on failure.
  */
-struct json_object *ipc_submit(struct json_object *request);
+struct json_object *ipc_submit(struct json_object * restrict request);
 
 #endif /* IPC_H */

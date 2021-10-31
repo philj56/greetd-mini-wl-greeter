@@ -16,12 +16,12 @@ struct surface {
 };
 
 void surface_initialise(
-		struct surface *surface,
+		struct surface * restrict surface,
 		struct wl_display *wl_display,
-		struct image *texture);
+		struct image * restrict texture);
 void surface_draw(
-		struct surface *surface,
-		struct color *color,
-		struct image *texture);
+		struct surface * restrict surface,
+		struct color * restrict color,
+		struct image * restrict texture);
 
 #endif /* SURFACE_H */

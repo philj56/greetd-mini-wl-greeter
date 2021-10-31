@@ -9,9 +9,9 @@
 #include "log.h"
 #include "nelem.h"
 
-static void calculate_font_extents(struct entry *entry, uint32_t scale);
+static void calculate_font_extents(struct entry * restrict entry, uint32_t scale);
 
-void entry_init(struct entry *entry, uint32_t scale)
+void entry_init(struct entry * restrict entry, uint32_t scale)
 {
 	calculate_font_extents(entry, scale);
 	struct color color;
@@ -120,7 +120,7 @@ void entry_init(struct entry *entry, uint32_t scale)
 	entry->image.buffer = cairo_image_surface_get_data(surface);
 }
 
-void entry_update(struct entry *entry)
+void entry_update(struct entry * restrict entry)
 {
 	cairo_t *cr = entry->pangocairo.cr;
 	PangoLayout *layout = entry->pangocairo.layout;
@@ -145,12 +145,12 @@ void entry_update(struct entry *entry)
 	entry->image.redraw = true;
 }
 
-void entry_set_scale(struct entry *entry, uint32_t scale)
+void entry_set_scale(struct entry * restrict entry, uint32_t scale)
 {
 	cairo_surface_set_device_scale(entry->pangocairo.surface, scale, scale);
 }
 
-void calculate_font_extents(struct entry *entry, uint32_t scale)
+void calculate_font_extents(struct entry * restrict entry, uint32_t scale)
 {
 	/*
 	 * To calculate the size of the password box, we do the following:

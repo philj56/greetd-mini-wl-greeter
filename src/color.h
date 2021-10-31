@@ -11,6 +11,6 @@ struct color {
 	float a;
 };
 
-struct color hex_to_color(const char *hex);
+struct color hex_to_color(const char * restrict hex);
 
 #endif /* UTIL_H */
