@@ -88,7 +88,7 @@ xkbcommon = dependency('xkbcommon')
 
 # Generate the necessary Wayland headers / sources with wayland-scanner
 wayland_scanner = find_program(
-  wayland_scanner_dep.get_pkgconfig_variable('wayland_scanner'),
+  wayland_scanner_dep.get_variable(pkgconfig: 'wayland_scanner'),
   native: true
 )
 
@@ -133,7 +133,7 @@ if scdoc.found()
     input: manpage,
     output: output,
     command: [
-      sh, '-c', '@0@ < @INPUT@ > @1@'.format(scdoc.path(), output)
+      sh, '-c', '@0@ < @INPUT@ > @1@'.format(scdoc.full_path(), output)
     ],
     install: true,
     install_dir: '@0@/man1'.format(mandir)
