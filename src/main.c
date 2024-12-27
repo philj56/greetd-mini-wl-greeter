@@ -919,17 +919,6 @@ int main(int argc, char *argv[])
 			&state.window.background_color,
 			&state.window.entry.image);
 
-	/* Call resize() just to center the password entry properly. */
-	resize(&state);
-
-	/*
-	 * We've just rendered everything and resized, so we don't need to do
-	 * it again right now.
-	 */
-	state.window.resize = false;
-	state.window.surface.redraw = false;
-	state.window.entry.surface.redraw = false;
-
 	/* Create the greetd session. */
 	create_session(&state);
 
