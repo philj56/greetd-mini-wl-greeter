@@ -30,8 +30,8 @@ paru -S greetd-mini-wl-greeter-git
 
 ### Source
 ```sh
-meson -Dbuildtype=release build
-sudo ninja -C build install
+meson setup build -Dbuildtype=release
+meson install -C build
 ```
 
 ## Tips
